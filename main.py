@@ -30,7 +30,7 @@ def processCommand(c):
     elif('open youtube' in c.lower()):
         wb.open('https://youtube.com')
 
-    elif(c.lower() == 'open yt history'):
+    elif('yt history' in c.lower()):
         wb.open("https://www.youtube.com/feed/history")
 
     elif('open gmail' in c.lower()):
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             print(word) # prints the audio in text
 
             # Listen for wake word(LISA)
-            if('lisa' in word.lower() or 'hey' in word.lower()):
+            if('lisa' in word.lower()):
                 speak('LISA is online... . How may I help you ?')
                 
                 with sr.Microphone() as source:
