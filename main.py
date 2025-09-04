@@ -106,7 +106,6 @@ if __name__ == '__main__':
     speak('Initializing LISA !!') # LISA -> Local Intregated System Algorithm
 
     while True:
-        # obtains audio from microphone
         r = sr.Recognizer() # r is recognizer object
         print('Recognizing....')
 
