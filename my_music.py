@@ -3,8 +3,11 @@ music_library = {'matwala jiya':'https://youtu.be/eqF9gGu4v3c', 'kangana':'https
                  'attention':'https://youtu.be/6QYcd7RggNU', 'french song':'https://youtu.be/AJcDwwN9ykY',
                  'batman':'https://youtu.be/_WEonvtesdc?t=18', 'miles':'https://youtu.be/BmFbczWrVUw',
                  'aarambh':'https://youtu.be/mDIut43JhwI', 'sushant':'https://youtu.be/eBCynQCnMDk',
-                 'mission impossible':'https://youtu.be/zfsZpTbc_7w', 'hotline':'https://youtu.be/JoqH_8bf8zQ',
-                 'dholida':'https://youtu.be/rz1hAo3Hiy4', 'smooth criminal':'https://youtu.be/h_D3VFfhvs4',
-                 'bang bang':'https://youtu.be/Pksuci63IhE', 'code':'https://youtu.be/lrfcxQguHVk',
-                 'amazing':'https://youtu.be/WBKdhFLnKP0', 'hanuman chalisa':'https://youtu.be/AETFvQonfV8',
-                 }
+                 'wanna be yours':'https://youtu.be/dFMu3ulTd-w', 'shape of you':'https://youtu.be/4jh2H5qFb44',
+                 'main hoon':'https://youtu.be/aE79diaYIww','mission impossible':'https://youtu.be/zfsZpTbc_7w',
+                 'hotline':'https://youtu.be/JoqH_8bf8zQ', 'dholida':'https://youtu.be/rz1hAo3Hiy4',
+                 'smooth criminal':'https://youtu.be/h_D3VFfhvs4', 'bang bang':'https://youtu.be/Pksuci63IhE',
+                 'code':'https://youtu.be/lrfcxQguHVk','amazing':'https://youtu.be/WBKdhFLnKP0',
+                 'hanuman chalisa':'https://youtu.be/AETFvQonfV8',
+                 'juta japani':'https://youtu.be/vR16Gu-Uq00',
+                 'one dance' : 'https://youtu.be/d8rkxrh0VSY'}

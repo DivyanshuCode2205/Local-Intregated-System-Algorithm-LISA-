@@ -5,10 +5,9 @@ import pyjokes
 from datetime import datetime
 import my_music
 import files_library
+import system_library
 import youtube
 import subprocess as sp # for accessing window's file explorer
-
-# recognizer = sr.Recognizer()
 
 # engine = pyttsx3.init()
 # print(engine.getProperty('volume'))
@@ -26,6 +25,9 @@ def speak(text):
 def processCommand(c):
     if ('open google' in c.lower()):
         wb.open('https://google.com')
+
+    elif ('open python site' in c.lower()):
+        wb.open('https://www.python.org/')
 
     elif('open youtube' in c.lower()):
         wb.open('https://youtube.com')
@@ -83,7 +85,7 @@ def processCommand(c):
         sp.Popen('explorer') # opens this pc
 
     # accessing any specific folder in explorer
-    elif(c.lower().startswith('access')):
+    elif(c.lower().startswith('get')):
         folder_name = (c.lower().split(' ', 1)[1]).strip()
 
         if folder_name in files_library.my_files:
@@ -92,6 +94,17 @@ def processCommand(c):
 
         else:
             speak(f'{folder_name} is not in your file library')
+
+    elif(c.lower().startswith('access')):
+        system_folder = (c.lower().split(' ', 1)[1]).strip()
+
+        if system_folder in system_library.sys_files:
+            path = system_library.sys_files[system_folder]
+            sp.Popen(f'explorer "{path}"')
+
+        else:
+            speak(f'{system_folder} is not in the system library')
+
 
     # this one will tell a joke based on programming or any programming language
     elif('joke' in c.lower()):
@@ -121,11 +134,11 @@ if __name__ == '__main__':
 
             # Listen for wake word(LISA)
             if('lisa' in word.lower()):
-                speak('LISA is online... . How may I help you ?')
+                speak('Yes')
                 
                 with sr.Microphone() as source:
                     print("Command LISA....")
-                    audio = r.listen(source, timeout = 5, phrase_time_limit = 3)
+                    audio = r.listen(source, timeout = 5, phrase_time_limit = 2)
                     command = r.recognize_google(audio)
 
                 if('stop' in command.lower() or 'terminate' in command.lower()): # checks if there is "stop" word
@@ -146,8 +159,8 @@ if __name__ == '__main__':
 
                 else:
                     processCommand(command)
-            else:
-                speak('you are either not audible or saying wrong name.')
+            # else:
+            #     speak('you are either not audible or saying wrong name.')
 
         except Exception as e:
             print(f'Error ocurred: {e}')
