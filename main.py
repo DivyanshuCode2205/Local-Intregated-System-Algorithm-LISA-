@@ -162,11 +162,6 @@ if __name__ == '__main__':
 
                 else:
                     processCommand(command)
-            # else:
-            #     speak('you are either not audible or saying wrong name.')
-        
-        # except Exception as e:
-        #     print(f'Error ocurred: {e}')
 
         except sr.WaitTimeoutError:
             speak("I didn't hear anything.")
