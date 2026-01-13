@@ -8,6 +8,6 @@ music_library = {'matwala jiya':'https://youtu.be/eqF9gGu4v3c', 'kangana':'https
                  'hotline':'https://youtu.be/JoqH_8bf8zQ', 'dholida':'https://youtu.be/rz1hAo3Hiy4',
                  'smooth criminal':'https://youtu.be/h_D3VFfhvs4', 'bang bang':'https://youtu.be/Pksuci63IhE',
                  'code':'https://youtu.be/lrfcxQguHVk','amazing':'https://youtu.be/WBKdhFLnKP0',
-                 'hanuman chalisa':'https://youtu.be/AETFvQonfV8',
+                 'hanuman chalisa':'https://youtu.be/Ui0y6Wx9vBo?list=RDMMUi0y6Wx9vBo',
                  'juta japani':'https://youtu.be/vR16Gu-Uq00',
                  'one dance' : 'https://youtu.be/d8rkxrh0VSY'}

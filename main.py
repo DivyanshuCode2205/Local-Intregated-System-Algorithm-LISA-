@@ -17,14 +17,17 @@ def speak(text):
     voices = engine.getProperty('voices') # gets list of voices [David and Zira]
     engine.setProperty('voice', voices[1].id) # chooses female voice (Zira)
     engine.setProperty('rate', 150) # sets the speak rate to 150
-    engine.say(text)
-    engine.runAndWait()
+    engine.say(text) # queues the text to be spoken
+    engine.runAndWait() # speaks the text in the queue and holds/waits until all the text is spoken.
     # engine.stop()
 
 # this will access given links
 def processCommand(c):
     if ('open google' in c.lower()):
         wb.open('https://google.com')
+
+    elif ('open maps' in c.lower()):
+        wb.open('https://maps.google.com/?authuser=0')
 
     elif ('open python site' in c.lower()):
         wb.open('https://www.python.org/')
@@ -115,7 +118,7 @@ def processCommand(c):
 
 
 if __name__ == '__main__':
-    # Listen for the wake word.
+    # Activation
     speak('Initializing LISA !!') # LISA -> Local Intregated System Algorithm
 
     while True:
@@ -137,8 +140,8 @@ if __name__ == '__main__':
                 speak('Yes')
                 
                 with sr.Microphone() as source:
-                    print("Command LISA....")
-                    audio = r.listen(source, timeout = 5, phrase_time_limit = 2)
+                    print("Command LISA ....")
+                    audio = r.listen(source, timeout = 5, phrase_time_limit = 3)
                     command = r.recognize_google(audio)
 
                 if('stop' in command.lower() or 'terminate' in command.lower()): # checks if there is "stop" word
@@ -161,6 +164,14 @@ if __name__ == '__main__':
                     processCommand(command)
             # else:
             #     speak('you are either not audible or saying wrong name.')
+        
+        # except Exception as e:
+        #     print(f'Error ocurred: {e}')
 
-        except Exception as e:
-            print(f'Error ocurred: {e}')
+        except sr.WaitTimeoutError:
+            speak("I didn't hear anything.")
+        except sr.UnknownValueError:
+            speak("Sorry, I couldn't understand.")
+        except sr.RequestError:
+            speak("Network problem while recognizing.")
+
