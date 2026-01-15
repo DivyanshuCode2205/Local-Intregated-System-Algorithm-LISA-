@@ -23,37 +23,37 @@ def speak(text):
 
 # this will access given links
 def processCommand(c):
-    if ('open google' in c.lower()):
+    if ('google' in c.lower()):
         wb.open('https://google.com')
 
-    elif ('open maps' in c.lower()):
+    elif ('maps' in c.lower()):
         wb.open('https://maps.google.com/?authuser=0')
 
-    elif ('open python site' in c.lower()):
+    elif ('python site' in c.lower()):
         wb.open('https://www.python.org/')
 
-    elif('open youtube' in c.lower()):
+    elif('youtube' in c.lower()):
         wb.open('https://youtube.com')
 
     elif('yt history' in c.lower()):
         wb.open("https://www.youtube.com/feed/history")
 
-    elif('open gmail' in c.lower()):
+    elif('gmail' in c.lower()):
         wb.open('https://gmail.com')
 
-    elif('open github' in c.lower()):
+    elif('github' in c.lower()):
         wb.open('https://github.com')
     
-    elif('open perplexity' in c.lower()):
+    elif('perplexity' in c.lower()):
         wb.open('https://perplexity.ai')
 
-    elif('open chat' in c.lower()):
+    elif('chat' in c.lower()):
         wb.open('https://chatgpt.com')
     
-    elif('open amazon' in c.lower()):
+    elif('amazon' in c.lower()):
         wb.open('https://amazon.in')
 
-    elif('open flipkart' in c.lower()):
+    elif('flipkart' in c.lower()):
         wb.open('https://flipkart.com')
 
 
@@ -99,14 +99,14 @@ def processCommand(c):
             speak(f'{folder_name} is not in your file library')
 
     elif(c.lower().startswith('access')):
-        system_folder = (c.lower().split(' ', 1)[1]).strip()
+        system_file = (c.lower().split(' ', 1)[1]).strip()
 
-        if system_folder in system_library.sys_files:
-            path = system_library.sys_files[system_folder]
+        if system_file in system_library.sys_files:
+            path = system_library.sys_files[system_file]
             sp.Popen(f'explorer "{path}"')
 
         else:
-            speak(f'{system_folder} is not in the system library')
+            speak(f'{system_file} is not in the system library')
 
 
     # this one will tell a joke based on programming or any programming language
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
         try:
             with sr.Microphone() as source:
-                print("Listening....")
+                print("Listening....") # This is wake command
                 audio = r.listen(source, timeout = 5, phrase_time_limit = 4)
 
             # recognize speech/audio using Google
@@ -137,11 +137,15 @@ if __name__ == '__main__':
 
             # Listen for wake word(LISA)
             if('lisa' in word.lower()):
-                speak('Yes')
+                from random import choice
+                response = ["Yes, Divyanshu how can I help you today ?", "Yes Divyanshu !",
+                             "What's your query ?", "What can I do for you ?"]
+                random_response = choice(response)
+                speak(random_response)
                 
                 with sr.Microphone() as source:
                     print("Command LISA ....")
-                    audio = r.listen(source, timeout = 5, phrase_time_limit = 3)
+                    audio = r.listen(source, timeout = 5, phrase_time_limit = 4)
                     command = r.recognize_google(audio)
 
                 if('stop' in command.lower() or 'terminate' in command.lower()): # checks if there is "stop" word
@@ -150,28 +154,27 @@ if __name__ == '__main__':
 
                 elif('date' in command.lower()):
                     now_date = datetime.now().date() # takes date part only from date and time object
-                    format_date = now_date.strftime('%d %B, %y')
+                    format_date = now_date.strftime('%d %B, %y') # Date Month, Year
+                    week_day = now_date.strftime('%A')
                     print(f'Today\'s day is {format_date}')
                     speak(f'The date is {format_date}')
 
-                elif('the time' in command.lower()):
+                    print(f'Today\'s weekday is {week_day}')
+                    speak(f'Weekday is {week_day}')
+
+                elif('time' in command.lower()):
                     now_time = datetime.now().time() # takes time part from date and time object
-                    format_time = now_time.strftime('%I:%M:%S %p')
+                    format_time = now_time.strftime('%I:%M:%S %p') # Hour:Minute:Second AM/PM
                     print(f'The time is {format_time}')
                     speak(f'The time is {format_time}')
 
                 else:
                     processCommand(command)
-            # else:
-            #     speak('you are either not audible or saying wrong name.')
-        
-        # except Exception as e:
-        #     print(f'Error ocurred: {e}')
 
         except sr.WaitTimeoutError:
-            speak("I didn't hear anything.")
+            print("I didn't hear anything.")
         except sr.UnknownValueError:
-            speak("Sorry, I couldn't understand.")
+            print("Sorry, I couldn't understand.")
         except sr.RequestError:
-            speak("Network problem while recognizing.")
+            print("Network problem while recognizing.")
 
