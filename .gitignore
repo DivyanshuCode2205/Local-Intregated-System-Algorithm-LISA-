@@ -1,0 +1,4 @@
+__pycache__/
+.venv/
+doubt.py
+sub_process.py
