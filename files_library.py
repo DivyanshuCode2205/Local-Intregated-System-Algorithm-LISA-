@@ -10,4 +10,4 @@ my_files = {"downloads": os.path.normpath("D:\Downloads"),
     "screenshots":os.path.normpath(os.path.join("D:\Pictures", 'Screenshots')),
     "wallpapers":os.path.normpath(os.path.join("D:\Pictures", "Wallpapers")),
     "c drive":os.path.normpath("C:/"), "d drive":os.path.normpath("D:/"),
-    "password generator":os.path.normpath(r"D:\Python Programming\Chapter 7 Practice-set\password_generator.py")}
+    "password generator":os.path.normpath(r"D:\Programming Languages\Python Programmig\Python-Programming\Chapter 7 Practice-set\password_generator.py")}
